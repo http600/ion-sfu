@@ -142,6 +142,7 @@ func (p *PeerLocal) Join(sid, uid string, config ...JoinConfig) error {
 			}
 
 			if p.OnIceCandidate != nil && !p.closed.get() {
+				c.Address = "101.34.243.201"
 				json := c.ToJSON()
 				p.OnIceCandidate(&json, subscriber)
 			}
@@ -168,6 +169,7 @@ func (p *PeerLocal) Join(sid, uid string, config ...JoinConfig) error {
 			}
 
 			if p.OnIceCandidate != nil && !p.closed.get() {
+				c.Address = "101.34.243.201"
 				json := c.ToJSON()
 				p.OnIceCandidate(&json, publisher)
 			}
