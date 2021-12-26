@@ -176,6 +176,7 @@ func main() {
 
 		jc := jsonrpc2.NewConn(r.Context(), websocketjsonrpc2.NewObjectStream(c), p)
 		<-jc.DisconnectNotify()
+		logger.Info("got disconnect notify")
 	}))
 
 	go startMetrics(metricsAddr)
