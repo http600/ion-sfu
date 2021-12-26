@@ -1,6 +1,7 @@
 package sfu
 
 import (
+	"github.com/pion/logging"
 	"math/rand"
 	"net"
 	"os"
@@ -85,7 +86,7 @@ type SFU struct {
 
 // NewWebRTCTransportConfig parses our settings and returns a usable WebRTCTransportConfig for creating PeerConnections
 func NewWebRTCTransportConfig(c Config) WebRTCTransportConfig {
-	se := webrtc.SettingEngine{}
+	se := webrtc.SettingEngine{LoggerFactory: &logging.DefaultLoggerFactory{DefaultLogLevel: logging.LogLevelTrace}}
 	se.DisableMediaEngineCopy(true)
 
 	if c.WebRTC.ICESinglePort != 0 {
